@@ -120,7 +120,7 @@ static const CGFloat settingsViewMarginLeadAndTrail = 30;
     
     #pragma mark - settingsScoreLabel + constraints
     self.scoreLabel = [UILabel new];
-    self.scoreLabel.text = [NSString stringWithFormat:@"Счёт:\t 0", self.score];
+    self.scoreLabel.text = [NSString stringWithFormat:@"Счёт:\t 0"];
     self.scoreLabel.textColor = UIColor.whiteColor;
     //self.scoreLabel.textColor = [UIColor colorWithRed:118.0f/255.0f green:214.0f/255.0f blue:251.0f/255.0f alpha:1];
     self.scoreLabel.font = [UIFont boldSystemFontOfSize:30];

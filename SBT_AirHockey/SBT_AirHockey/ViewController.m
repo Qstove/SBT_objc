@@ -57,6 +57,7 @@
 @property (nonatomic, strong) SettingsView *settingsView;
 
 @property (strong, nonatomic) NSTimer *timer;
+@property (assign, nonatomic) BOOL gameStarted;
 
 @end
 
@@ -151,6 +152,7 @@ static const CGFloat ballRadius = 25;
     [self.ball setHidden:YES];
     [self.view addSubview:self.ball];
 
+    self.gameStarted = NO;
 }
 
 -(void)addSetingsButton
@@ -206,17 +208,31 @@ static const CGFloat ballRadius = 25;
 
 - (void)tapSettings
 {
-    if (self.settingsView.isHide)
+    if(self.gameStarted)
     {
-        self.checkPoint = self.ball.center;
-        [self.timer invalidate];
-        [self.settingsView toggleViewSettings];
+        if (self.settingsView.isHide)
+        {
+            self.checkPoint = self.ball.center;
+            [self.timer invalidate];
+            [self.settingsView toggleViewSettings];
+        }
+        else
+        {
+            [self.settingsView toggleViewSettings];
+            self.ball.center = self.checkPoint;
+            [self startGameWithoutReset:YES];
+        }
     }
     else
     {
-        [self.settingsView toggleViewSettings];
-        self.ball.center = self.checkPoint;
-        [self startGameWithoutReset:YES];
+        if (self.settingsView.isHide)
+        {
+            [self.settingsView toggleViewSettings];
+        }
+        else
+        {
+            [self.settingsView toggleViewSettings];
+        }
     }
 }
 
@@ -224,6 +240,7 @@ static const CGFloat ballRadius = 25;
 {
     if(!dontReset)
     {
+        self.gameStarted = YES;
         self.checkPoint = self.view.center;
         self.dX = self.dY = 1.0;
         self.settingsView.score = 0;

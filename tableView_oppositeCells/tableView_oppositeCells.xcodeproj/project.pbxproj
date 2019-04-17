@@ -14,6 +14,12 @@
 		404BDA3F225C9843007C8FD3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 404BDA3E225C9843007C8FD3 /* main.m */; };
 		404BDA55225C9C4B007C8FD3 /* ClothTypeCell_R.m in Sources */ = {isa = PBXBuildFile; fileRef = 404BDA54225C9C4B007C8FD3 /* ClothTypeCell_R.m */; };
 		404BDA5B225C9DC3007C8FD3 /* ClothTypeObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 404BDA5A225C9DC3007C8FD3 /* ClothTypeObject.m */; };
+		4090DD0222670B5B00BEE866 /* BrandsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4090DD0122670B5B00BEE866 /* BrandsViewController.swift */; };
+		4090DD0522670D1600BEE866 /* BrandsCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4090DD0422670D1600BEE866 /* BrandsCollectionViewLayout.swift */; };
+		4090DD072267106800BEE866 /* BrandCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4090DD062267106800BEE866 /* BrandCollectionViewCell.swift */; };
+		4090DD09226710C600BEE866 /* BrandCollectionViewCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4090DD08226710C600BEE866 /* BrandCollectionViewCellDelegate.swift */; };
+		4090DD0E2267128100BEE866 /* BrandObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 4090DD0D2267128100BEE866 /* BrandObject.m */; };
+		4090DD102267144400BEE866 /* BrandObjectCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4090DD0F2267144400BEE866 /* BrandObjectCollection.swift */; };
 		40B70712225CB4EB0007794D /* ClothTypeCell_L.m in Sources */ = {isa = PBXBuildFile; fileRef = 40B70711225CB4EB0007794D /* ClothTypeCell_L.m */; };
 /* End PBXBuildFile section */
 
@@ -31,6 +37,14 @@
 		404BDA54225C9C4B007C8FD3 /* ClothTypeCell_R.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ClothTypeCell_R.m; sourceTree = "<group>"; };
 		404BDA59225C9DC3007C8FD3 /* ClothTypeObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ClothTypeObject.h; sourceTree = "<group>"; };
 		404BDA5A225C9DC3007C8FD3 /* ClothTypeObject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ClothTypeObject.m; sourceTree = "<group>"; };
+		4090DD0022670B5A00BEE866 /* tableView_oppositeCells-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "tableView_oppositeCells-Bridging-Header.h"; sourceTree = "<group>"; };
+		4090DD0122670B5B00BEE866 /* BrandsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandsViewController.swift; sourceTree = "<group>"; };
+		4090DD0422670D1600BEE866 /* BrandsCollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandsCollectionViewLayout.swift; sourceTree = "<group>"; };
+		4090DD062267106800BEE866 /* BrandCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandCollectionViewCell.swift; sourceTree = "<group>"; };
+		4090DD08226710C600BEE866 /* BrandCollectionViewCellDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandCollectionViewCellDelegate.swift; sourceTree = "<group>"; };
+		4090DD0C2267128100BEE866 /* BrandObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BrandObject.h; sourceTree = "<group>"; };
+		4090DD0D2267128100BEE866 /* BrandObject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BrandObject.m; sourceTree = "<group>"; };
+		4090DD0F2267144400BEE866 /* BrandObjectCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandObjectCollection.swift; sourceTree = "<group>"; };
 		40B70710225CB4EB0007794D /* ClothTypeCell_L.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ClothTypeCell_L.h; sourceTree = "<group>"; };
 		40B70711225CB4EB0007794D /* ClothTypeCell_L.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ClothTypeCell_L.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -51,6 +65,7 @@
 			children = (
 				404BDA2E225C983D007C8FD3 /* tableView_oppositeCells */,
 				404BDA2D225C983D007C8FD3 /* Products */,
+				4090DD0022670B5A00BEE866 /* tableView_oppositeCells-Bridging-Header.h */,
 			);
 			sourceTree = "<group>";
 		};
@@ -65,17 +80,16 @@
 		404BDA2E225C983D007C8FD3 /* tableView_oppositeCells */ = {
 			isa = PBXGroup;
 			children = (
+				4090DD1322672ADC00BEE866 /* Layouts */,
+				4090DD1222672AC400BEE866 /* ViewControllers */,
+				4090DD0322670B7F00BEE866 /* Models */,
 				404BDA4B225C9B39007C8FD3 /* Cells */,
 				404BDA2F225C983D007C8FD3 /* AppDelegate.h */,
 				404BDA30225C983D007C8FD3 /* AppDelegate.m */,
-				404BDA32225C983D007C8FD3 /* ViewController.h */,
-				404BDA33225C983D007C8FD3 /* ViewController.m */,
 				404BDA38225C9842007C8FD3 /* Assets.xcassets */,
 				404BDA3A225C9843007C8FD3 /* LaunchScreen.storyboard */,
 				404BDA3D225C9843007C8FD3 /* Info.plist */,
 				404BDA3E225C9843007C8FD3 /* main.m */,
-				404BDA59225C9DC3007C8FD3 /* ClothTypeObject.h */,
-				404BDA5A225C9DC3007C8FD3 /* ClothTypeObject.m */,
 			);
 			path = tableView_oppositeCells;
 			sourceTree = "<group>";
@@ -87,8 +101,40 @@
 				404BDA54225C9C4B007C8FD3 /* ClothTypeCell_R.m */,
 				40B70710225CB4EB0007794D /* ClothTypeCell_L.h */,
 				40B70711225CB4EB0007794D /* ClothTypeCell_L.m */,
+				4090DD062267106800BEE866 /* BrandCollectionViewCell.swift */,
+				4090DD08226710C600BEE866 /* BrandCollectionViewCellDelegate.swift */,
 			);
 			name = Cells;
+			sourceTree = "<group>";
+		};
+		4090DD0322670B7F00BEE866 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				404BDA59225C9DC3007C8FD3 /* ClothTypeObject.h */,
+				404BDA5A225C9DC3007C8FD3 /* ClothTypeObject.m */,
+				4090DD0C2267128100BEE866 /* BrandObject.h */,
+				4090DD0D2267128100BEE866 /* BrandObject.m */,
+				4090DD0F2267144400BEE866 /* BrandObjectCollection.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		4090DD1222672AC400BEE866 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				404BDA32225C983D007C8FD3 /* ViewController.h */,
+				404BDA33225C983D007C8FD3 /* ViewController.m */,
+				4090DD0122670B5B00BEE866 /* BrandsViewController.swift */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		4090DD1322672ADC00BEE866 /* Layouts */ = {
+			isa = PBXGroup;
+			children = (
+				4090DD0422670D1600BEE866 /* BrandsCollectionViewLayout.swift */,
+			);
+			name = Layouts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -122,6 +168,7 @@
 				TargetAttributes = {
 					404BDA2B225C983D007C8FD3 = {
 						CreatedOnToolsVersion = 10.2;
+						LastSwiftMigration = 1020;
 					};
 				};
 			};
@@ -160,12 +207,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4090DD072267106800BEE866 /* BrandCollectionViewCell.swift in Sources */,
 				404BDA34225C983D007C8FD3 /* ViewController.m in Sources */,
 				404BDA5B225C9DC3007C8FD3 /* ClothTypeObject.m in Sources */,
 				404BDA3F225C9843007C8FD3 /* main.m in Sources */,
+				4090DD102267144400BEE866 /* BrandObjectCollection.swift in Sources */,
 				40B70712225CB4EB0007794D /* ClothTypeCell_L.m in Sources */,
+				4090DD0522670D1600BEE866 /* BrandsCollectionViewLayout.swift in Sources */,
 				404BDA55225C9C4B007C8FD3 /* ClothTypeCell_R.m in Sources */,
+				4090DD09226710C600BEE866 /* BrandCollectionViewCellDelegate.swift in Sources */,
 				404BDA31225C983D007C8FD3 /* AppDelegate.m in Sources */,
+				4090DD0E2267128100BEE866 /* BrandObject.m in Sources */,
+				4090DD0222670B5B00BEE866 /* BrandsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -299,6 +352,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 996LRUNHW7;
 				INFOPLIST_FILE = tableView_oppositeCells/Info.plist;
@@ -308,6 +362,9 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "Qstove.tableView-oppositeCells";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "tableView_oppositeCells-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -316,6 +373,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 996LRUNHW7;
 				INFOPLIST_FILE = tableView_oppositeCells/Info.plist;
@@ -325,6 +383,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "Qstove.tableView-oppositeCells";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "tableView_oppositeCells-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

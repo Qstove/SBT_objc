@@ -32,12 +32,18 @@
         
         _titleLabel = [UILabel new];
         _titleLabel.translatesAutoresizingMaskIntoConstraints = NO;
+        _titleLabel.adjustsFontSizeToFitWidth = YES;
+        _titleLabel.numberOfLines = 1;
+        _titleLabel.minimumScaleFactor=0.5;
+        _titleLabel.font = [UIFont systemFontOfSize:40 weight:1];
         [self.contentView addSubview: _titleLabel];
         
         _subtitleLabel = [UILabel new];
         _subtitleLabel.translatesAutoresizingMaskIntoConstraints = NO;
-        _subtitleLabel.numberOfLines = 0;
-        [self.contentView addSubview: _subtitleLabel];
+        _subtitleLabel.adjustsFontSizeToFitWidth = YES;
+        _subtitleLabel.numberOfLines = 1;
+        _subtitleLabel.minimumScaleFactor=0.5;
+        _subtitleLabel.font = [UIFont systemFontOfSize:20 weight:0.5];        [self.contentView addSubview: _subtitleLabel];
         
         [self makeConstraintWithLeftAligment];
     }
@@ -49,14 +55,18 @@
         [NSLayoutConstraint activateConstraints:@[
                                                   [_coverImageView.centerYAnchor constraintEqualToAnchor:self.contentView.centerYAnchor],
                                                   [_coverImageView.leadingAnchor constraintEqualToAnchor:self.contentView.leadingAnchor constant:10.0f],
-                                                  [_coverImageView.widthAnchor constraintEqualToConstant:40.0f],
-                                                  [_coverImageView.heightAnchor constraintEqualToConstant:40.0f],
+                                                  [_coverImageView.bottomAnchor constraintEqualToAnchor:self.contentView.bottomAnchor constant:-10],
+                                                  [_coverImageView.heightAnchor constraintEqualToAnchor:_coverImageView.widthAnchor],
                                                   
                                                   [_titleLabel.leadingAnchor constraintEqualToAnchor:_coverImageView.trailingAnchor constant:20.0f],
                                                   [_titleLabel.topAnchor constraintEqualToAnchor:self.contentView.topAnchor constant:(CGRectGetHeight(self.contentView.frame) - 40)/2],
+                                                  [_titleLabel.bottomAnchor constraintEqualToAnchor:self.contentView.centerYAnchor],
+                                                  [_titleLabel.trailingAnchor constraintEqualToAnchor:self.contentView.trailingAnchor],
                                                   
+                                                  [_subtitleLabel.topAnchor constraintEqualToAnchor:self.contentView.centerYAnchor],
                                                   [_subtitleLabel.leadingAnchor constraintEqualToAnchor:_coverImageView.trailingAnchor constant:20.0f],
-                                                  [_subtitleLabel.bottomAnchor constraintEqualToAnchor:self.contentView.bottomAnchor constant:-(CGRectGetHeight(self.contentView.frame) - 40)/2]
+                                                  [_subtitleLabel.bottomAnchor constraintEqualToAnchor:self.contentView.bottomAnchor constant:-(CGRectGetHeight(self.contentView.frame) - 40)/2],
+                                                  [_subtitleLabel.trailingAnchor constraintEqualToAnchor:self.contentView.trailingAnchor]
                                                   ]
          
          ];

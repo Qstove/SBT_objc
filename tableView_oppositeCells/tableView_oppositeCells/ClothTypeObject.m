@@ -16,6 +16,7 @@
     _clothTypeImage = image;
     _clothTypeTitle = title;
     _clothTypeDescription = description;
+    
     return self;
 }
 

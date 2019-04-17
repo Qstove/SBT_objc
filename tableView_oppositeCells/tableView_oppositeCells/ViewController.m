@@ -10,7 +10,7 @@
 #import "ClothTypeCell_L.h"
 #import "ClothTypeCell_R.h"
 #import "ClothTypeObject.h"
-
+#import "tableView_oppositeCells-Swift.h"
 
 @interface ViewController () <UITableViewDataSource, UITableViewDelegate>
 
@@ -23,24 +23,24 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.navigationItem.title = @"My Wardrobe";
     self.view.backgroundColor = UIColor.whiteColor;
     [self fillClothTypeObjectsArr];
     self.tableView = [[UITableView alloc] initWithFrame:self.view.bounds style: UITableViewStylePlain];
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
-  
     [self.tableView registerClass:[ClothTypeCell_L class] forCellReuseIdentifier:NSStringFromClass([ClothTypeCell_L class])];
     [self.tableView registerClass:[ClothTypeCell_R class] forCellReuseIdentifier:NSStringFromClass([ClothTypeCell_R class])];
-    
     [self.view addSubview: self.tableView];
 }
 
+
+#pragma mark - tableView delegate
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return self.clothTypeObjects.count;
 }
-
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -60,14 +60,28 @@
         
     }
 }
-    
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+//    NSLog(@"%f",CGRectGetHeight([[UIApplication sharedApplication] statusBarFrame]));
+    return (CGRectGetHeight(self.view.frame) - CGRectGetHeight([[UIApplication sharedApplication] statusBarFrame]) - CGRectGetHeight(self.navigationController.navigationBar.frame))/(CGFloat)self.clothTypeObjects.count;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    BrandsViewController *brandsVC = [BrandsViewController new];
+    [self.navigationController pushViewController:brandsVC animated:YES];
+}
+
+
+#pragma mark - private methods
 -(void) fillClothTypeObjectsArr {
     self.clothTypeObjects = @[
                               [[ClothTypeObject alloc]initWithImage:[UIImage imageNamed:@"hat"] title: @"Hat" subtitle:@"Somethink to wear on head"],
                               [[ClothTypeObject alloc]initWithImage:[UIImage imageNamed:@"chest"] title: @"Chest" subtitle:@"Somethink to wear on chest"],
                               [[ClothTypeObject alloc]initWithImage:[UIImage imageNamed:@"pants"] title: @"Pants" subtitle:@"Somethink to wear on legs"],
                               [[ClothTypeObject alloc]initWithImage:[UIImage imageNamed:@"shoes"] title: @"Shoes" subtitle:@"Somethink to wear on heels"],
-                              [[ClothTypeObject alloc]initWithImage:[UIImage imageNamed:@"acc"] title: @"acc" subtitle:@"Somethink like accesories"]
+                              [[ClothTypeObject alloc]initWithImage:[UIImage imageNamed:@"acc"] title: @"Accessories" subtitle:@"Somethink like accessories"]
                               ];
 }
  

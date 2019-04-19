@@ -48,7 +48,6 @@
     
     self.searchController.searchBar.delegate = self;
     self.searchController.searchBar.placeholder = @"Search for Images";
-    //[self.view addSubview:self.searchBar];
     
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
     layout.minimumLineSpacing = 1.0;
@@ -59,11 +58,14 @@
     self.collectionView = [[UICollectionView alloc]initWithFrame:CGRectZero collectionViewLayout:layout];
     self.collectionView.dataSource = self;
     self.collectionView.delegate = self;
-    self.collectionView.backgroundColor = [UIColor colorWithRed:235.0/255.0 green:235.0/255.0 blue:235.0/255.0 alpha:1];
+    self.collectionView.backgroundColor = [UIColor colorWithRed:121.0/255.0 green:121.0/255.0 blue:121.0/255.0 alpha:1];
     [self.collectionView registerClass:[SVFCollectionViewCell class] forCellWithReuseIdentifier:kCellIdentifier];
-    self.loadingSpinner = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-   
+    
+    self.loadingSpinner = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+    self.loadingSpinner.center = self.view.center;
     [self.view addSubview:self.collectionView];
+    [self.view addSubview:self.loadingSpinner];
+
 }
 
 - (void)viewDidLayoutSubviews
@@ -76,7 +78,10 @@
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
     [self.searchController resignFirstResponder];
+    NSString *query = self.searchController.searchBar.text;
     [self.presenter searchButtonDidPressedWith:self.searchController.searchBar.text];       //послали сигнал презентеру
+    [self.searchController setActive:NO];
+    self.searchController.searchBar.text = query;
 }
 
 #pragma mark - CollectionViewDataSource

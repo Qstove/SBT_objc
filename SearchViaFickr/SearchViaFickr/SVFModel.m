@@ -31,6 +31,8 @@
 #pragma PresenterDelegate
 - (void)sendQueryToGetImagesWith:(NSString*)query;
 {
+    [[NSUserDefaults standardUserDefaults] setObject:query forKey:@"lastQuery"];            //save
+    NSString *string = [[NSUserDefaults standardUserDefaults] objectForKey:@"keyString"];   //get
     [self.imageArray removeAllObjects];
     [self.dataRepository sendQueryToGetDataWith:query];
 }

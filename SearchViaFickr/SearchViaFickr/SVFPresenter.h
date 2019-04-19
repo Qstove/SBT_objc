@@ -13,7 +13,6 @@
 #import "SVFModelProtocol.h"
 
 
-
 @interface SVFPresenter : NSObject <SVFViewProtocol, SVFModelProtocol>
 
 @property (nonatomic, weak) id <SVFPresenterProtocol> delegateView;

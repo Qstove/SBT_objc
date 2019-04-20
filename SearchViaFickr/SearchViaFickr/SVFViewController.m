@@ -10,11 +10,10 @@
 #import "SVFPresenter.h"
 #import "SVFService.h"
 #import "SVFCollectionViewCell.h"
-
 #define kCellIdentifier @"SVFCollectionViewCell"
 
 
-@interface SVFViewController ()
+@interface SVFViewController () 
 
 @property (nonatomic,strong) UISearchController *searchController;
 @property (nonatomic,strong) UICollectionView *collectionView;
@@ -31,6 +30,25 @@
     [super viewDidLoad];
     self.presenter = [[SVFPresenter alloc]initAndAttachView:self];
     [self createUI];
+    [self checkAccessToNotification];
+}
+
+- (void)checkAccessToNotification
+{
+    [[UNUserNotificationCenter currentNotificationCenter] getNotificationSettingsWithCompletionHandler:^(UNNotificationSettings * _Nonnull settings) {
+        if (settings.authorizationStatus != UNAuthorizationStatusAuthorized)
+        {
+            UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Отключены уведомления!"
+                                                                           message:@"Включите показ уведомлений в настройках для более корректной работы приложения."
+                                                                    preferredStyle:UIAlertControllerStyleAlert];
+            
+            UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                                  handler:^(UIAlertAction * action) {}];
+            
+            [alert addAction:defaultAction];
+            [self presentViewController:alert animated:YES completion:nil];
+        }
+    }];
 }
 
 - (void) createUI
@@ -113,8 +131,56 @@
 
 - (void) searchViewDidFinishedLoadingWith:(NSArray <UIImage *>*)imagesArray
 {
-    self.ptrToImageArray = imagesArray;
     [self.loadingSpinner stopAnimating];
-    [self.collectionView reloadData];
+    if (imagesArray.count == 0)
+    {
+        UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Нет соединения!"
+                                                                       message:@"Отсутствие интернет соединения или доступа к ресурсам Flickr!"
+                                                                preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                              handler:^(UIAlertAction * action) {}];
+        
+        [alert addAction:defaultAction];
+        [self presentViewController:alert animated:YES completion:nil];
+    }
+    else
+    {
+        self.ptrToImageArray = imagesArray;
+        [self.collectionView reloadData];
+    }
 }
+
+
+#pragma mark - UNUserNotificationCenterDelegate
+
+- (void)userNotificationCenter:(UNUserNotificationCenter *)center
+       willPresentNotification:(UNNotification *)notification
+         withCompletionHandler:(void (^)(UNNotificationPresentationOptions options))completionHandler
+{
+    if (completionHandler)
+    {
+        completionHandler(UNAuthorizationOptionSound | UNAuthorizationOptionAlert | UNAuthorizationOptionBadge);
+    }
+}
+
+- (void)userNotificationCenter:(UNUserNotificationCenter *)center
+didReceiveNotificationResponse:(UNNotificationResponse *)response
+         withCompletionHandler:(void(^)(void))completionHandler
+{
+    UNNotificationContent *content = response.notification.request.content;
+    if (content.userInfo[@"query"])
+    {
+        NSString *query = [[NSUserDefaults standardUserDefaults] objectForKey:@"lastQuery"];
+        self.searchController.searchBar.text = query;
+        [self.presenter searchButtonDidPressedWith:query];
+    }
+    
+    if (completionHandler)
+    {
+        completionHandler();
+    }
+}
+
+
 @end

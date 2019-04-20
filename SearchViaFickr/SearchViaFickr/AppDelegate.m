@@ -8,24 +8,53 @@
 
 #import "AppDelegate.h"
 #import "SVFViewController.h"
+#import "SVFNotificationService.h"
 
 
-@interface AppDelegate ()
+
+@import UserNotifications;
+
+@interface AppDelegate () 
 
 @end
 
-@implementation AppDelegate
+@implementation AppDelegate 
 
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+{
     SVFViewController *svfViewController = [SVFViewController new];
     self.window = [[UIWindow alloc]initWithFrame:UIScreen.mainScreen.bounds];
     UINavigationController *navigationController = [[UINavigationController alloc]initWithRootViewController:svfViewController];
     self.window.rootViewController = navigationController;
+    
+    UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
+    center.delegate = svfViewController;
+    UNAuthorizationOptions options = UNAuthorizationOptionSound | UNAuthorizationOptionAlert | UNAuthorizationOptionBadge;
+    [center requestAuthorizationWithOptions:options
+                          completionHandler:^(BOOL granted, NSError * _Nullable error) {
+                              if (!granted)
+                              {
+                                  NSLog(@"Доступ не дали");
+                              }
+                          }];
+
+   
    // [[UINavigationBar appearance] setBarTintColor:UIColor.grayColor];
     [self.window makeKeyAndVisible];
     return YES;
 }
+
+-(void)applicationDidEnterBackground:(UIApplication *)application
+{
+    [SVFNotificationService sheduleLocalNotificationWithInterval];
+}
+
+- (void)applicationDidBecomeActive:(UIApplication *)application
+{
+    [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
+}
+
 
 
 @end

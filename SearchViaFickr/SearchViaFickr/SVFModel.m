@@ -32,18 +32,17 @@
 #pragma PresenterDelegate
 - (void)sendQueryToGetImagesWith:(NSString*)query;
 {
-    [[NSUserDefaults standardUserDefaults] setObject:query forKey:@"lastQuery"];            //save
-    NSString *string = [[NSUserDefaults standardUserDefaults] objectForKey:@"keyString"];   //get
     [self.imageArray removeAllObjects];
     [self.dataRepository sendQueryToGetDataWith:query];
 }
 
 - (void)getImage:(UIImage *)image
 {
-    @synchronized (self) {
+    if(image)
+    {
         [self.imageArray addObject:image];
     }
-        [self.delegatePresenter searchViewDidFinishedLoadingWith:self.imageArray];
+    [self.delegatePresenter searchViewDidFinishedLoadingWith:self.imageArray];
 }
 
 

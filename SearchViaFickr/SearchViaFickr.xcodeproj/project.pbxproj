@@ -16,9 +16,9 @@
 		406ED9032267787B009140AB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 406ED9022267787B009140AB /* main.m */; };
 		406ED90C2267790B009140AB /* SVFViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 406ED90B2267790B009140AB /* SVFViewController.m */; };
 		406ED90F22677AFA009140AB /* SVFPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 406ED90E22677AFA009140AB /* SVFPresenter.m */; };
-		406ED918226787E1009140AB /* NSString+QSTNSString.m in Sources */ = {isa = PBXBuildFile; fileRef = 406ED917226787E1009140AB /* NSString+QSTNSString.m */; };
 		406ED9212268514A009140AB /* SVFModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 406ED9202268514A009140AB /* SVFModel.m */; };
 		406ED92622685633009140AB /* SVFDataRepository.m in Sources */ = {isa = PBXBuildFile; fileRef = 406ED92522685633009140AB /* SVFDataRepository.m */; };
+		40A71211226B9AB20014485D /* SVFNotificationService.m in Sources */ = {isa = PBXBuildFile; fileRef = 40A71210226B9AB20014485D /* SVFNotificationService.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,14 +41,14 @@
 		406ED90B2267790B009140AB /* SVFViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SVFViewController.m; sourceTree = "<group>"; };
 		406ED90D22677AFA009140AB /* SVFPresenter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SVFPresenter.h; sourceTree = "<group>"; };
 		406ED90E22677AFA009140AB /* SVFPresenter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SVFPresenter.m; sourceTree = "<group>"; };
-		406ED916226787E1009140AB /* NSString+QSTNSString.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+QSTNSString.h"; sourceTree = "<group>"; };
-		406ED917226787E1009140AB /* NSString+QSTNSString.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+QSTNSString.m"; sourceTree = "<group>"; };
 		406ED91A226843FC009140AB /* SVFViewProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SVFViewProtocol.h; sourceTree = "<group>"; };
 		406ED91F2268514A009140AB /* SVFModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SVFModel.h; sourceTree = "<group>"; };
 		406ED9202268514A009140AB /* SVFModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SVFModel.m; sourceTree = "<group>"; };
 		406ED92222685544009140AB /* SVFModelProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SVFModelProtocol.h; sourceTree = "<group>"; };
 		406ED92422685633009140AB /* SVFDataRepository.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SVFDataRepository.h; sourceTree = "<group>"; };
 		406ED92522685633009140AB /* SVFDataRepository.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SVFDataRepository.m; sourceTree = "<group>"; };
+		40A7120F226B9AB20014485D /* SVFNotificationService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SVFNotificationService.h; sourceTree = "<group>"; };
+		40A71210226B9AB20014485D /* SVFNotificationService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SVFNotificationService.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,7 +84,6 @@
 				406ED91D22684449009140AB /* Model */,
 				406ED91C2268443E009140AB /* View */,
 				406ED91B22684437009140AB /* Presenter */,
-				406ED915226787AA009140AB /* QSTCategories */,
 				406ED8F322677879009140AB /* AppDelegate.h */,
 				406ED8F422677879009140AB /* AppDelegate.m */,
 				406ED8FC2267787B009140AB /* Assets.xcassets */,
@@ -93,15 +92,6 @@
 				406ED9022267787B009140AB /* main.m */,
 			);
 			path = SearchViaFickr;
-			sourceTree = "<group>";
-		};
-		406ED915226787AA009140AB /* QSTCategories */ = {
-			isa = PBXGroup;
-			children = (
-				406ED916226787E1009140AB /* NSString+QSTNSString.h */,
-				406ED917226787E1009140AB /* NSString+QSTNSString.m */,
-			);
-			name = QSTCategories;
 			sourceTree = "<group>";
 		};
 		406ED91B22684437009140AB /* Presenter */ = {
@@ -128,7 +118,7 @@
 		406ED91D22684449009140AB /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				406ED92822685AEE009140AB /* Service */,
+				406ED92822685AEE009140AB /* Services */,
 				406ED92722685AE1009140AB /* DataRepository */,
 				406ED91F2268514A009140AB /* SVFModel.h */,
 				406ED9202268514A009140AB /* SVFModel.m */,
@@ -155,7 +145,16 @@
 			name = DataRepository;
 			sourceTree = "<group>";
 		};
-		406ED92822685AEE009140AB /* Service */ = {
+		406ED92822685AEE009140AB /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				40A7120E226B9A370014485D /* Notificatons */,
+				40A7120D226B9A1D0014485D /* Network */,
+			);
+			name = Services;
+			sourceTree = "<group>";
+		};
+		40A7120D226B9A1D0014485D /* Network */ = {
 			isa = PBXGroup;
 			children = (
 				403049952267BE0E00AF589E /* SVFServiceHelper.h */,
@@ -164,7 +163,16 @@
 				403049922267B0EB00AF589E /* SVFService.m */,
 				403049942267B11D00AF589E /* SVFServiceProtocol.h */,
 			);
-			name = Service;
+			name = Network;
+			sourceTree = "<group>";
+		};
+		40A7120E226B9A370014485D /* Notificatons */ = {
+			isa = PBXGroup;
+			children = (
+				40A7120F226B9AB20014485D /* SVFNotificationService.h */,
+				40A71210226B9AB20014485D /* SVFNotificationService.m */,
+			);
+			name = Notificatons;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -237,7 +245,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				403049972267BE0E00AF589E /* SVFServiceHelper.m in Sources */,
-				406ED918226787E1009140AB /* NSString+QSTNSString.m in Sources */,
 				406ED9032267787B009140AB /* main.m in Sources */,
 				406ED92622685633009140AB /* SVFDataRepository.m in Sources */,
 				406ED90C2267790B009140AB /* SVFViewController.m in Sources */,
@@ -246,6 +253,7 @@
 				406ED8F522677879009140AB /* AppDelegate.m in Sources */,
 				4030499E2267CB6500AF589E /* SVFCollectionViewCell.m in Sources */,
 				403049932267B0EB00AF589E /* SVFService.m in Sources */,
+				40A71211226B9AB20014485D /* SVFNotificationService.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -9,11 +9,14 @@
 #import <UIKit/UIKit.h>
 #import "SVFDataRepository.h"
 #import "SVFService.h"
+#import "SVFNotificationService.h"
+
 
 
 @interface SVFDataRepository ()
 
-@property (nonatomic, strong) SVFService *service;
+@property (nonatomic, strong) SVFService *networkService;
+@property (nonatomic, strong) SVFNotificationService *notificationService;
 
 @end
 
@@ -23,14 +26,18 @@
 {
     self = [super init];
     self.delegateModel = model;
-    self.service = [SVFService new];
-    self.service.output = self;
+    self.networkService = [SVFService new];
+    self.notificationService = [SVFNotificationService new];
+    [self.notificationService sheduleLocalNotificationWithDate];
+    self.networkService.output = self;
     return self;
 }
 
 - (void)sendQueryToGetDataWith:(NSString*)query
 {
-    [self.service searchFlickrPhotoWith:query];
+    [[NSUserDefaults standardUserDefaults] setObject:query forKey:@"lastQuery"];            //save
+    [self.networkService searchFlickrPhotoWith:query];
+    
 }
 
 

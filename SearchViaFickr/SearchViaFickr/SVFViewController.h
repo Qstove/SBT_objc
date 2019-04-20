@@ -8,9 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "SVFPresenterProtocol.h"
+@import UserNotifications;
 
 
-@interface SVFViewController : UIViewController <SVFPresenterProtocol, UISearchBarDelegate, UICollectionViewDataSource, UICollectionViewDelegate>
+@interface SVFViewController : UIViewController <SVFPresenterProtocol, UISearchBarDelegate, UICollectionViewDataSource, UICollectionViewDelegate, UNUserNotificationCenterDelegate>
 
 @end
 

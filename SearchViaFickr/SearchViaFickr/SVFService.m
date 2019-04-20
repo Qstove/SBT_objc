@@ -8,7 +8,6 @@
 
 #import "SVFService.h"
 #import "SVFServiceHelper.h"
-#import "NSString+QSTNSString.h"
 
 
 @interface SVFService ()
@@ -44,14 +43,21 @@
     
     NSURLSessionDataTask *sessionDataTask = [self.session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error)
      {
-         NSDictionary *temp = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
-         [self.session finishTasksAndInvalidate];
-         for(NSDictionary *photo in [[temp objectForKey:@"photos"] objectForKey:@"photo"])
+         if (data == nil)
          {
-             NSString *imgURL = [SVFServiceHelper FLICKR_ImgURL:photo]; //метод, принимающий словарь и генерирущий ссылку
-             dispatch_async(myQueue, ^{
-                 [self startImageLoadingWithURL:imgURL];
-             });
+             [self.session finishTasksAndInvalidate];
+             [self.output searchViewDidFinishedLoadingWith:nil];
+         }
+         else {
+             NSDictionary *temp = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+             [self.session finishTasksAndInvalidate];
+             for(NSDictionary *photo in [[temp objectForKey:@"photos"] objectForKey:@"photo"])
+             {
+                 NSString *imgURL = [SVFServiceHelper FLICKR_ImgURL:photo]; //метод, принимающий словарь и генерирущий ссылку
+                 dispatch_async(myQueue, ^{
+                     [self startImageLoadingWithURL:imgURL];
+                 });
+             }
          }
      }];
     [sessionDataTask resume];

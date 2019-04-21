@@ -10,6 +10,8 @@
 #import "SVFPresenter.h"
 #import "SVFService.h"
 #import "SVFCollectionViewCell.h"
+#import "SVFImageFilterViewController.h"
+
 #define kCellIdentifier @"SVFCollectionViewCell"
 
 
@@ -182,5 +184,10 @@ didReceiveNotificationResponse:(UNNotificationResponse *)response
     }
 }
 
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    SVFImageFilterViewController *imageFilterViewController = [[SVFImageFilterViewController alloc]initWithImage:self.ptrToImageArray[indexPath.row]];
+    [self.navigationController pushViewController:imageFilterViewController animated:YES];
+}
 
 @end

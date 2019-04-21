@@ -19,6 +19,7 @@
 		406ED9212268514A009140AB /* SVFModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 406ED9202268514A009140AB /* SVFModel.m */; };
 		406ED92622685633009140AB /* SVFDataRepository.m in Sources */ = {isa = PBXBuildFile; fileRef = 406ED92522685633009140AB /* SVFDataRepository.m */; };
 		40A71211226B9AB20014485D /* SVFNotificationService.m in Sources */ = {isa = PBXBuildFile; fileRef = 40A71210226B9AB20014485D /* SVFNotificationService.m */; };
+		40A71218226BE7320014485D /* SVFImageFilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40A71217226BE7320014485D /* SVFImageFilterViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +50,8 @@
 		406ED92522685633009140AB /* SVFDataRepository.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SVFDataRepository.m; sourceTree = "<group>"; };
 		40A7120F226B9AB20014485D /* SVFNotificationService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SVFNotificationService.h; sourceTree = "<group>"; };
 		40A71210226B9AB20014485D /* SVFNotificationService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SVFNotificationService.m; sourceTree = "<group>"; };
+		40A71216226BE7320014485D /* SVFImageFilterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SVFImageFilterViewController.h; sourceTree = "<group>"; };
+		40A71217226BE7320014485D /* SVFImageFilterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SVFImageFilterViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +114,8 @@
 				406ED90A2267790B009140AB /* SVFViewController.h */,
 				406ED90B2267790B009140AB /* SVFViewController.m */,
 				406ED91A226843FC009140AB /* SVFViewProtocol.h */,
+				40A71216226BE7320014485D /* SVFImageFilterViewController.h */,
+				40A71217226BE7320014485D /* SVFImageFilterViewController.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -249,6 +254,7 @@
 				406ED92622685633009140AB /* SVFDataRepository.m in Sources */,
 				406ED90C2267790B009140AB /* SVFViewController.m in Sources */,
 				406ED9212268514A009140AB /* SVFModel.m in Sources */,
+				40A71218226BE7320014485D /* SVFImageFilterViewController.m in Sources */,
 				406ED90F22677AFA009140AB /* SVFPresenter.m in Sources */,
 				406ED8F522677879009140AB /* AppDelegate.m in Sources */,
 				4030499E2267CB6500AF589E /* SVFCollectionViewCell.m in Sources */,

@@ -13,7 +13,7 @@
 - (instancetype) initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
-    _imageView = [[UIImageView alloc]initWithFrame:frame];
+    _imageView = [UIImageView new];
     [self.contentView addSubview:_imageView];
     _imageView.backgroundColor = UIColor.blackColor;
     self.contentView.backgroundColor = UIColor.blackColor;

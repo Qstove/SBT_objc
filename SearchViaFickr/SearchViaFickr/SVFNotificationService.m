@@ -53,7 +53,7 @@ typedef NS_ENUM(NSInteger, LCTTriggerType) {
                          @"query": [[NSUserDefaults standardUserDefaults] objectForKey:@"lastQuery"]
                          };
     
-    UNNotificationTrigger *intervalTrigger = [self triggerWithType:LCTTriggerTypeInterval];
+    UNNotificationTrigger *intervalTrigger = [self triggerWithType:LCTTriggerTypeDate];
     NSString *identifier = @"NotificationWithInterval";
     UNNotificationRequest *request = [UNNotificationRequest requestWithIdentifier:identifier
                                                                           content:content trigger:intervalTrigger];

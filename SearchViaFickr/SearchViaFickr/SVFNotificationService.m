@@ -49,10 +49,19 @@ typedef NS_ENUM(NSInteger, LCTTriggerType) {
     content.body = @"Почему бы не начать новый день с поиска картинок?";
     content.sound = [UNNotificationSound defaultSound];
     content.badge = @([[UIApplication sharedApplication] applicationIconBadgeNumber] + 1);
+    NSString *query = [[NSUserDefaults standardUserDefaults] objectForKey:@"lastQuery"];
+    if(query)
+    {
     content.userInfo = @{
                          @"query": [[NSUserDefaults standardUserDefaults] objectForKey:@"lastQuery"]
                          };
-    
+    }
+    else
+    {
+        content.userInfo = @{
+                             @"query": @""
+                             };
+    }
     UNNotificationTrigger *intervalTrigger = [self triggerWithType:LCTTriggerTypeDate];
     NSString *identifier = @"NotificationWithInterval";
     UNNotificationRequest *request = [UNNotificationRequest requestWithIdentifier:identifier

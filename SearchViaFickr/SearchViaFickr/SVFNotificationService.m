@@ -20,15 +20,19 @@ typedef NS_ENUM(NSInteger, LCTTriggerType) {
 
 + (void)sheduleLocalNotificationWithInterval
 {
+    NSString *query = [[NSUserDefaults standardUserDefaults] objectForKey:@"lastQuery"];
+    if (!query)
+    {
+        query = @"ничего";
+    }
     UNMutableNotificationContent *content = [UNMutableNotificationContent new];
     content.title = @"Что за...";
-    content.body = [NSString stringWithFormat:@"Алло, ты не искал %@ уже ровно минуту!\nAre you ok?!", [[NSUserDefaults standardUserDefaults] objectForKey:@"lastQuery"]];
+    content.body = [NSString stringWithFormat:@"Алло, ты не искал %@ уже ровно минуту!\nAre you ok?!", query];
     content.sound = [UNNotificationSound defaultSound];
     content.badge = @([[UIApplication sharedApplication] applicationIconBadgeNumber] + 1);
     content.userInfo = @{
-                         @"query": [[NSUserDefaults standardUserDefaults] objectForKey:@"lastQuery"]
+                            @"query": query
                          };
-    
     NSString *identifier = @"NotificationWithInterval";
     UNNotificationRequest *request = [UNNotificationRequest requestWithIdentifier:identifier
                                                                           content:content trigger:[UNTimeIntervalNotificationTrigger triggerWithTimeInterval:10 repeats:NO]];
@@ -44,24 +48,19 @@ typedef NS_ENUM(NSInteger, LCTTriggerType) {
 
 - (void)sheduleLocalNotificationWithDate
 {
+    NSString *query = [[NSUserDefaults standardUserDefaults] objectForKey:@"lastQuery"];
+    if (!query)
+    {
+        query = @"ничего";
+    }
     UNMutableNotificationContent *content = [UNMutableNotificationContent new];
     content.title = @"БУ! Уже полночь!";
     content.body = @"Почему бы не начать новый день с поиска картинок?";
     content.sound = [UNNotificationSound defaultSound];
     content.badge = @([[UIApplication sharedApplication] applicationIconBadgeNumber] + 1);
-    NSString *query = [[NSUserDefaults standardUserDefaults] objectForKey:@"lastQuery"];
-    if(query)
-    {
     content.userInfo = @{
-                         @"query": [[NSUserDefaults standardUserDefaults] objectForKey:@"lastQuery"]
+                         @"query": query
                          };
-    }
-    else
-    {
-        content.userInfo = @{
-                             @"query": @""
-                             };
-    }
     UNNotificationTrigger *intervalTrigger = [self triggerWithType:LCTTriggerTypeDate];
     NSString *identifier = @"NotificationWithInterval";
     UNNotificationRequest *request = [UNNotificationRequest requestWithIdentifier:identifier
